@@ -4,10 +4,10 @@ from datetime import date,timedelta,datetime
 import pickle
 
 # get relevant raw data and random it:
-file_name = 'nouns.txt'
-with open(file_name,'r') as f:
-  words = [line.replace('\n','') for line in f if len(re.search('[א-ת]+',line).group() )== 5]
-  random.shuffle(words) # need plant a seed!
+file_name = 'wordlist.js'
+with open (file_name,'r',encoding='utf-8') as f:
+  words = re.findall('[א-ת]+', f.read())
+  random.shuffle(words)
 
 # create the words for each day ahead:
 history = {} 
