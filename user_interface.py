@@ -15,16 +15,13 @@ class UI:
     self.wordle_game = wordle_game
 
   def ask_user_if_to_play (self) -> bool:
-    try:
-      unswer = st.text_input('שנתחיל במשחק? כן/לא')
-    except:
+    unswer = st.text_input('שנתחיל במשחק? כן/לא')
+    if unswer not in ['כן','לא']:
       st.error("התשובה חייבת להכין את האחת המילים: כן/לא'")
-      unswer = st.text_input('שנתחיל במשחק? כן/לא','כן',key='placeholder')
-
-      if unswer =='כן':
-        self.start_play = True
-      else:
-        self.start_play = False
+    elif unswer =='כן':
+      self.start_play = True
+    else:
+      self.start_play = False
 
   def get_user_guess(self) -> str:
     self.user_guess = st.text_input('_ _ _ _ _\n')
