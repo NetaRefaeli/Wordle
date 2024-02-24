@@ -19,7 +19,7 @@ class UI:
       unswer = st.text_input('שנתחיל במשחק? כן/לא')
     except:
       st.error("התשובה חייבת להכין את האחת המילים: כן/לא'")
-      unswer = st.text_input('שנתחיל במשחק? כן/לא')
+      unswer = st.text_input('שנתחיל במשחק? כן/לא','כן',key='placeholder')
 
       if unswer =='כן':
         self.start_play = True
