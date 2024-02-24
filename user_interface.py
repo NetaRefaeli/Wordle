@@ -16,10 +16,10 @@ class UI:
 
   def ask_user_if_to_play (self) -> bool:
     try:
-      unswer = st.text_input(value='שנתחיל במשחק? כן/לא',placeholder='כן')
+      unswer = st.text_input(label= str,value='שנתחיל במשחק? כן/לא',placeholder='כן')
     except:
       st.error("התשובה חייבת להכין את האחת המילים: כן/לא'")
-      unswer = st.text_input(value='שנתחיל במשחק? כן/לא',placeholder='כן')
+      unswer = st.text_input(label= str,value='שנתחיל במשחק? כן/לא',placeholder='כן')
 
       if unswer =='כן':
         self.start_play = True
