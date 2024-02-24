@@ -7,6 +7,7 @@ class Wordle:
   all_words_dict: dict = {}
   round = 0
   _is_running = True
+  _user_guess = None
 
   def __init__(self):  # self is how the instance talks to itself
     # unpickle dict and save in this instance
@@ -23,7 +24,8 @@ class Wordle:
       return self._is_running and self.round < 6
 
   def is_real_word(self, user_guess: str) -> bool:
-    if wordle_ui.user_guess in list(self.all_words_dict.values()):
+    self.user_guess = user_guess
+    if self.user_guess in list(self.all_words_dict.values()):
       return True
     else:
       return False
@@ -32,13 +34,14 @@ class Wordle:
     # compare input with answer
     output = Color.BOLD
     correct_guess_output = Color.BOLD
+    self.user_guess = user_guess
 
-    if wordle_ui.user_guess == wordle_game.word_of_the_day:
+    if self.user_guess == self.word_of_the_day:
       self._is_running = False
-      correct_guess_output += Color.GREEN + wordle_ui.user_guess
+      correct_guess_output += Color.GREEN + self.user_guess
       return 'כל הכבוד!\n' + correct_guess_output + Color.END
 
-    for index, letter in zip(range(0,5) , wordle_ui.user_guess):
+    for index, letter in zip(range(0,5) , user_guess):
       if self.word_of_the_day[index] == letter:
         output += Color.GREEN + letter + ' '
       elif letter in self.word_of_the_day:
@@ -48,6 +51,6 @@ class Wordle:
 
     self.round += 1
     if self.round == 6:
-      return output + '\n המילה הנכונה הינה: ' + wordle_game.word_of_the_day
+      return output + '\n המילה הנכונה הינה: ' + self.word_of_the_day
     else:
       return output + Color.END
