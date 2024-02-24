@@ -11,13 +11,13 @@ class UI:
   def __init__(self, wordle_game):
     self.wordle_game = wordle_game
 
-  def ask_user_if_to_play (self) -> None:
+  def ask_user_if_to_play (self) -> bool:
     try:
       unswer = input('שנתחיל במשחק? כן/לא')
       if unswer =='כן':
         self.start_play = True
       else:
-        pass
+        self.start_play = False
     except:
       self.start_play = input('התשובה חייבת להכין את האחת המילים: כן/לא')
 
