@@ -9,19 +9,22 @@ class UI:
   round: int = 1
   user_guess: str = ''
   wordle_game = None
-  _start_play: bool = False
+
 
   def __init__(self, wordle_game):
     self.wordle_game = wordle_game
 
-  def ask_user_if_to_play (self) -> bool:
-    unswer = st.text_input('שנתחיל במשחק? כן/לא')
-    if unswer not in ['כן','לא']:
-      st.error("התשובה חייבת להכין את האחת המילים: כן/לא'")
-    elif unswer =='כן':
-      self.start_play = True
+  @staticmethod
+  def ask_user_if_to_play () -> bool:
+    answer = st.text_input('שנתחיל במשחק? כן/לא')
+    while answer not in ['כן','לא']:
+      st.error("התשובה חייבת להכיל את האחת המילים: כן/לא'")
+      answer = st.text_input('שנתחיל במשחק? כן/לא')
+    
+    if answer =='כן':
+      return True
     else:
-      self.start_play = False
+      return False
 
   def get_user_guess(self) -> str:
     self.user_guess = st.text_input('_ _ _ _ _\n')
