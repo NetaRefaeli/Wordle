@@ -1,7 +1,7 @@
 import re
 import random
-from datetime import date,timedelta,datetime, time
-import pickl
+from datetime import date,timedelta,datetime
+import pickle
 
 # get relevant raw data and random it:
 file_name = 'nouns.txt'

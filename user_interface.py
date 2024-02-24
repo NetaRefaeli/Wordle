@@ -1,3 +1,7 @@
+import re
+from datetime import date,timedelta,datetime, time
+import math
+
 class UI:
   welcome: str = (''' !"ברוכים הבאים למשחק "מילה אחת ביום
   :הנחיות
@@ -25,7 +29,7 @@ class UI:
     print(self.wordle_game.check_input(self.user_guess))
 
   def time_until_next_word(self) -> str:
-    tz = pytz.timezone('Israel')
-    tomorrow = datetime.combine(date= date.today(),time = time(), tzinfo = tz)+ timedelta(days = 1)
-    hours_until_next_word =  math.ceil((tomorrow - datetime.now(tz)).total_seconds()/60/60)
+    israel_offset = timedelta(hours=2)
+    tomorrow = datetime.combine(date= date.today(),time = time())+ timedelta(days = 1) + israel_offset
+    hours_until_next_word =  math.ceil((tomorrow - datetime.now()+israel_offset).total_seconds()/60/60)
     print(f'שעות עד למילה הבאה {hours_until_next_word}')
