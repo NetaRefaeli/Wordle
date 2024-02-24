@@ -26,9 +26,8 @@ class UI:
   def get_user_guess(self) -> str:
     self.user_guess = st.text_input('_ _ _ _ _\n')
     while self.wordle_game.is_real_word(self.user_guess) == False:
-      st.write('מילה לא קיימת, נסה שוב')
-      self.user_guess = st.text_input('_ _ _ _ _\n')
-
+      st.error('מילה לא קיימת, נסה שוב')
+      
     st.write(self.wordle_game.check_input(self.user_guess))
 
   def time_until_next_word(self) -> str:
