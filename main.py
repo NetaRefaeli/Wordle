@@ -16,6 +16,7 @@ if __name__ == '__main__':
   3. אות צהובה = אות קיימת אך לא במיקום הנכון
   4. יש לך 6 ניחושים
   ''')
+    wordle_ui.ask_user_if_to_play()
     while wordle_game.is_game_running():
       wordle_ui.get_user_guess()
 
