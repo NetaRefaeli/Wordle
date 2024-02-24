@@ -15,6 +15,7 @@ if __name__ == '__main__':
   4. יש לך 6 ניחושים
   ''')
   # play
+  wordle_ui.ask_user_if_to_play()
   while wordle_ui.ask_user_if_to_play()==True and wordle_game.is_game_running()==True:
     wordle_ui.get_user_guess()
 
