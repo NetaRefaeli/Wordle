@@ -2,6 +2,8 @@ from datetime import date,timedelta,datetime, time
 import pickle
 from colors import Color
 
+import streamlit as st
+
 class Wordle:
   word_of_the_day: str = ''
   all_words_dict: dict = {}
@@ -39,6 +41,7 @@ class Wordle:
     if self.user_guess == self.word_of_the_day:
       self._is_running = False
       correct_guess_output += Color.GREEN + self.user_guess
+      st.balloons()
       return 'כל הכבוד!\n' + correct_guess_output + Color.END
 
     for index, letter in zip(range(0,5) , user_guess):
