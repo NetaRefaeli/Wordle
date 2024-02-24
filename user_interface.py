@@ -15,7 +15,7 @@ class UI:
     self.wordle_game = wordle_game
 
   def ask_user_if_to_play (self) -> bool:
-    unswer = st.text_input('שנתחיל במשחק? כן/לא')
+    unswer = st.text_input('שנתחיל במשחק? כן/לא',key='play')
     if unswer not in ['כן','לא']:
       st.error("התשובה חייבת להכין את האחת המילים: כן/לא'")
     elif unswer =='כן':
@@ -24,10 +24,10 @@ class UI:
       self.start_play = False
 
   def get_user_guess(self) -> str:
-    self.user_guess = st.text_input('_ _ _ _ _\n')
+    self.user_guess = st.text_input('_ _ _ _ _\n',key='guess')
     while self.wordle_game.is_real_word(self.user_guess) == False:
       st.error('מילה לא קיימת, נסה שוב')
-      
+
     st.write(self.wordle_game.check_input(self.user_guess))
 
   def time_until_next_word(self) -> str:
