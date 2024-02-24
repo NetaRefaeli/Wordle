@@ -3,7 +3,7 @@ from datetime import date,timedelta,datetime, time
 import math
 
 class UI:
-  welcome: str = (''' !"ברוכים הבאים למשחק "מילה אחת ביום
+  welcome: str = (''' # !"ברוכים הבאים למשחק "מילה אחת ביום
   :הנחיות
   1. עלייך לנחש מילה בעלת 5 אותיות
   2. אות ירוקה = אות קיימת במיקום הנכון
