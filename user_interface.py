@@ -6,23 +6,25 @@ import streamlit as st
 
 
 class UI:
-  start_play: bool = False
   round: int = 1
   user_guess: str = ''
   wordle_game = None
+  _start_play: bool = False
 
   def __init__(self, wordle_game):
     self.wordle_game = wordle_game
 
   def ask_user_if_to_play (self) -> bool:
     try:
-      unswer = st.text_input('שנתחיל במשחק? כן/לא')
+      unswer = st.text_input(value='שנתחיל במשחק? כן/לא',placeholder='כן')
+    except:
+      st.error("התשובה חייבת להכין את האחת המילים: כן/לא'")
+      unswer = st.text_input(value='שנתחיל במשחק? כן/לא',placeholder='כן')
+
       if unswer =='כן':
         self.start_play = True
       else:
         self.start_play = False
-    except:
-      self.start_play = st.text_input('התשובה חייבת להכין את האחת המילים: כן/לא')
 
   def get_user_guess(self) -> str:
     self.user_guess = st.text_input('_ _ _ _ _\n')
