@@ -4,3 +4,4 @@ class Color:
     YELLOW = '\033[93m'
     BOLD = '\033[1m'
     END = '\033[0m'
+    LIGHT_GREY = '\033[37m'
