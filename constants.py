@@ -1,0 +1,1 @@
+PATH_TO_PICKLE_FILE = "/Users/neta/python_projects/Wordle/daily_words.pickle"

@@ -2,6 +2,7 @@ import pickle
 from datetime import date
 
 from colors import Color
+from constants import PATH_TO_PICKLE_FILE
 
 
 class Wordle:
@@ -9,11 +10,10 @@ class Wordle:
   all_words_dict: dict = {}
   round = 0
   _is_running = True
-  _user_guess = None
 
   def __init__(self):  # self is how the instance talks to itself
     # unpickle dict and save in this instance
-    with open('history.pickle', 'rb') as f:
+    with open(PATH_TO_PICKLE_FILE, 'rb') as f:
       self.all_words_dict = pickle.load(f)
 
     # get the word of day and save in this instance as a parameter
@@ -26,8 +26,7 @@ class Wordle:
       return self._is_running and self.round < 6
 
   def is_real_word(self, user_guess: str) -> bool:
-    self.user_guess = user_guess
-    if self.user_guess in list(self.all_words_dict.values()):
+    if user_guess in list(self.all_words_dict.values()):
       return True
     else:
       return False
@@ -36,12 +35,11 @@ class Wordle:
     # compare input with answer
     output = Color.BOLD
     correct_guess_output = Color.BOLD
-    self.user_guess = user_guess
 
-    if self.user_guess == self.word_of_the_day:
+    if user_guess == self.word_of_the_day:
       self._is_running = False
-      correct_guess_output += Color.GREEN + self.user_guess
-      return 'כל הכבוד!\n' + correct_guess_output + Color.END
+      correct_guess_output += Color.GREEN + user_guess
+      return 'Correct!🥳\n' + correct_guess_output + Color.END
 
     for index, letter in zip(range(0,5) , user_guess):
       if self.word_of_the_day[index] == letter:
@@ -53,6 +51,6 @@ class Wordle:
 
     self.round += 1
     if self.round == 6:
-      return output + '\n המילה הנכונה הינה: ' + self.word_of_the_day
+      return output + '\nOpps.. you are out of guesses!\nThe correct word is: ' + self.word_of_the_day
     else:
       return output + Color.END
