@@ -6,7 +6,6 @@ if __name__ == '__main__':
 # creating an instance of class/type "Wordle"
   wordle_game = Wordle()
   wordle_ui = UI(wordle_game)
-  print(wordle_game.word_of_the_day)
   
   # welcome message
   wordle_ui.print_welcome_message()
