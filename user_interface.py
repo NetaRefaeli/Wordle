@@ -29,7 +29,7 @@ class UI:
     answer = input('Shell we play?\n Yes / No\n ')
     while answer.lower() not in ['yes','no','y','n']:
       print("Sorry.. Coudn't undestand your answer.")
-      answer = input('Is it Yes or No?')
+      answer = input('Is it Yes or No?\n')
     
     if answer.lower() in ['yes','y']:
       return True
