@@ -2,7 +2,7 @@
 
 ## Pre-processing:
 
-- Words sources: [Cambridge English PET Vocabulary List](https://www.cambridgeenglish.org/images/84669-pet-vocabulary-list.pdf)
+- Words sources: [3000 most common words in english:](https://www.ef.com/wwen/english-resources/english-vocabulary/top-3000-words/)
 - Filtered only for 5-letter words.
 - Saved a list in a pickle.
 
