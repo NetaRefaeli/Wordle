@@ -1,12 +1,13 @@
 import re
 import random
-from datetime import date,timedelta,datetime
+from datetime import date,timedelta
 import pickle
 
 from constants import PATH_TO_PICKLE_FILE
 
 # get relevant raw data and random it:
-file_name = 'vocabulary-list.txt'
+file_name = 'common_words.txt'
+
 with open (file_name,'r') as f:
   f = re.findall('[a-zA-Z]+', f.read())
   words = [i.lower() for i in f if len(i)==5]
@@ -20,5 +21,5 @@ for index in range (len(words)):
   date = date + +timedelta(days=1)
 
 # pickle it:
-with open(PATH_TO_PICKLE_FILE, 'wb') as f:
+with open('daily_words.pickle', 'wb') as f:
   pickle.dump(daily_words,f)
