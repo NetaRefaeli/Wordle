@@ -21,5 +21,5 @@ for index in range (len(words)):
   date = date + +timedelta(days=1)
 
 # pickle it:
-with open('daily_words.pickle', 'wb') as f:
+with open(PATH_TO_PICKLE_FILE, 'wb') as f:
   pickle.dump(daily_words,f)
